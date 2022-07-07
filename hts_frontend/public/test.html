@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewpont" charset="utf-8" />
+    <title>TEST</title>
+  </head>
+  <body>
+    <script>
+      // 깊은복사를 할 수 있는 함수
+      // concat , filter , map , slice , 스프레드(전개연산자 )  (...문법 )
+
+      const a = [1, 2, 3];
+      const b = [...a]; // 스프레드 연산자
+      const c = [1, 2, 3];
+      const d = c; // 래퍼런스
+      console.log(
+        '1=========================================스프레드 연산자 =======',
+      );
+      b.push(4); // b에 추가
+      d.push(4);
+
+      console.log('a 의 값은 =' + a); // 1,2,3
+      console.log('b 의 값은 =' + b); // 1,2,3,4
+      console.log('c 의 값은 =' + c); // 1,2,3,4
+      console.log('d 의 값은 =' + d); // 1,2,3,4
+
+      console.log('2=========================================추가하기 =======');
+      const a2 = [1, 2, 3];
+      const b2 = a2.concat(4); // a2에값은 바뀌지 않는다. dom을 추가 할때
+      const f = [0, ...a, 4]; // a를 흩뿌린 값에 4를 concat 한다.
+      console.log('a2 의 값은 =' + a2);
+      console.log('b2 의 값은 =' + b2);
+      console.log('f 의 값은 =' + f);
+
+      console.log('3=========================================걸러내기 =======');
+      const a3 = [1, 2, 3];
+      const b3 = a3.filter((n) => {
+        return n != 1;
+      }); // 필터는 true 만 걸러낸다.
+      console.log('b3 의 값은 =' + b3); // 필터는 dom을 삭제 할때 사용.
+
+      console.log('4=========================================잘라내기 =======');
+
+      const h = [1, 2, 3];
+      const i = h.slice(0, 2);
+      console.log('i 의 값은 =' + i);
+
+      const j = [...h.slice(0, 2), 4, ...h.slice(2, 3)]; // 잘라낸후 해당위치에 삽입
+      console.log('j 의 값은 =' + j);
+      console.log('5=========================================반복하기 =======');
+      const a5 = [1, 2, 3];
+
+      // for( let i = 0 ; i < a5.length ; i++ )  JPX에서 사용못함
+      // forEach는 반복이 안됨.
+      // map이 return 가능
+
+      a5.forEach((n) => {
+        console.log(n);
+      });
+
+      const b7 = a5.map((n) => {
+        //
+        return n;
+      }); // map의 n번째 값을 b7에 넣음
+
+      console.log('b7 의 값 = {}', b7);
+
+      // b7 = [...a5 ] 동일하다.
+
+      const b5 = a5.map((n) => {
+        console.log(n + ':' + a5);
+        return n + '번째';
+      });
+
+      console.log(b5);
+
+      const obj1 = { id: 1, name: 'obj7', phone: '1234', age: 29 }; // 받은 데이터
+      const obj2 = { name: '임꺽정', phone: '0987' }; // 수정데이터
+      const obj3 = { ...obj1, ...obj2 };
+
+      console.log('받은데이터 = {}', obj1);
+      console.log('수정데이터 = {}', obj2);
+      console.log('죄종데이터 = {}', obj3);
+
+      const users = [
+        { id: 1, name: 'name1', phone: '2222' },
+        { id: 2, name: 'name2', phone: '2222' },
+        { id: 3, name: 'name3', phone: '2222' },
+      ];
+
+      const updatePhoneDto = { id: 2, phone: '010-111-2222' };
+      // const newUsers = users.map((u) => u); // newUsers = [...users];
+      // console.log('newUsers0 = {}', newUsers);
+      const newUsers = users.map((u) =>
+        u.id === updatePhoneDto.id ? { ...u, ...updatePhoneDto } : u,
+      ); // newUsers = [...users];
+      console.log('newUsers1 = {}', newUsers);
+    </script>
+
+    <div id="root"></div>
+  </body>
+</html>
