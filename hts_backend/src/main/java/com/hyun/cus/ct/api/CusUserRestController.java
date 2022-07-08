@@ -5,14 +5,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hyun.config.dto.MemberRequestDto;
+import com.hyun.config.dto.TokenDto;
 import com.hyun.cus.model.vo.User;
 import com.hyun.cus.sv.SvCusA001;
-import com.hyun.framework.dto.ResponseDto;
 
 @RestController
 public class CusUserRestController  {
@@ -25,33 +27,42 @@ public class CusUserRestController  {
 	@Autowired
 	private SvCusA001 svCusA001;
 
-	
+	@CrossOrigin
 	@PostMapping("/auth/joinProc")
-	public ResponseDto<Integer> insertUser(@RequestBody User user ) throws Exception
+	public ResponseEntity<?> insertUser(@RequestBody User user ) throws Exception
 	{
 		// 회원등록하는 메소드 
-		logger.error(" insertUser START");
-		logger.error("user=[{}]",user);
+		logger.info(" insertUser START");
+		logger.info("user=[{}]",user);
 		
-		int rtnInt = 0;
+		user.setUsernm(user.getUsername()); // 유저명으로 변경
+        user.setUsername(user.getEmail()); // 시큐리티 때문에 username에 명으로 치환함 		
+		User userEntity = null;
+
 		try {
-			 svCusA001.insertUser(user);
+			 userEntity =	 svCusA001.insertUser(user);
 		}catch( DataIntegrityViolationException e )
 		{
 			throw new Exception("중복된 이메일 입니다.");
 		}
 		
-		return new ResponseDto<Integer>( HttpStatus.OK.value() ,rtnInt) ; // Jackson이 json으로 파싱해서 던짐.
+		return new ResponseEntity<>( userEntity ,HttpStatus.OK) ; // Jackson이 json으로 파싱해서 던짐.
 	}
 	
-	
-//	@PostMapping("api/login")
-//	public ResponseDto<Integer> loginProc(@RequestBody User user ) throws Exception
-//	{
-///    User principal = user.로그인( user );
-//	   if( principal != null ) session.setAttribute("principal",principal)
-		   //		logger.error("api/login user=[{}]",user);
-//		return new ResponseDto<Integer>( HttpStatus.OK.value() ,0) ; // Jackson이 json으로 파싱해서 던짐.
-//	}
+	@CrossOrigin
+	@PostMapping("/auth/loginProc")
+	public ResponseEntity<?>  loginProc(@RequestBody MemberRequestDto memberRequestDto ) throws Exception
+	{
+		logger.info(" loginProc START");
+		logger.info(" memberRequestDto="+ memberRequestDto);
+		
+		TokenDto tokenDto = svCusA001.login(memberRequestDto);
+		
+		// 지점 정보 전까지 brId 강제 셋팅 
+		tokenDto.setEmail("neosam32@gamil.com");
+		tokenDto.setBrId("M0000000001");
+		
+		return new ResponseEntity<>( tokenDto ,HttpStatus.OK) ; // Jackson이 json으로 파싱해서 던짐.
+	}
 	
 }

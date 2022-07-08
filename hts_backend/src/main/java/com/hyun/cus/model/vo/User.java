@@ -2,8 +2,13 @@ package com.hyun.cus.model.vo;
 
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
@@ -23,12 +28,13 @@ import lombok.ToString;
 public class User {
 	
 	@Builder
-    public User(String email, String username, String password, String role, String delyn, String provider,
+    public User(String id,String email, String username, String password, Authority authority, String delyn, String provider,
 			String providerId, Timestamp createDate ,String tlno1 , String tlno2 , String tlno3   ) {
+		this.id   = id;
 		this.email = email;
 		this.username = username;
 		this.password = password;
-		this.role = role;
+		this.authority = authority;
 		this.delyn = delyn;
 		this.provider = provider;
 		this.providerId = providerId;
@@ -45,7 +51,9 @@ public class User {
     private String username; /* 시큐리 때문에 e-mail 들어감 */
     private String usernm;   /* 실제 사용자 이름 */
     private String password;
-    private String role; // USER.,ADMIN
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
     private String delyn;
     
     private String provider;    // 
@@ -53,10 +61,11 @@ public class User {
     private String tlno1;
     private String tlno2;
     private String tlno3;
-//    public List<String> getRoleList  (){
-//    	if( this.roles.length() > 0) {
+    
+//    public List<String> getAuthorityList  (){
+//    	if( this.authority.length() > 0) {
 //    		
-//    		return Arrays.asList( this.roles.split(","));
+//    		return Arrays.asList( this.authority.split(","));
 //    	}
 //    	return new ArrayList<>();
 //    }

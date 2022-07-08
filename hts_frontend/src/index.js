@@ -1,13 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 
-const root = ReactDOM.createRoot(document.querySelector('#root'));
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+// const jwt = require("jsonwebtoken");
+// const token = jwt.sign(
+//   { htsDev: "htsDev1234!" },
+//   "secret-key",
+//   { expiresIn: "7d" },
+//   (err, token) => {
+//     if (err) {
+//       console.log(err);
+//       return;
+//     }
+//     console.log(token);
+//   }
+// );
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -15,7 +30,7 @@ root.render(
         <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

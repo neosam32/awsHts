@@ -26,6 +26,7 @@ function App() {
         <Route path='/est/search' exact={true} element={<EstListPage />} />
         <Route path='/testWrite' exact={true} element={<TestWritePage />} />
       </Routes>
+      <br />
       <Footer></Footer>
     </div>
   );

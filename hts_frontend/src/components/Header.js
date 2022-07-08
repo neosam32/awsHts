@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 const Header = () => {
   return (
     <div>
-      <Navbar bg='light' variant='light'>
+      <Navbar bg='dark' variant='dark'>
         <Container>
           <Navbar.Brand> HTS</Navbar.Brand>
           <Nav className='me-auto'>
