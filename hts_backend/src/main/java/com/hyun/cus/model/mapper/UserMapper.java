@@ -26,7 +26,7 @@ public interface UserMapper {
      final String maxMbId = "select concat('M', lpad(cast( cm.mcnt as char ),9, '0' ) ) as id"
 					     		+ "  from ("
 					     		+ "select count(1) + 1 as mCnt"
-					     		+ "  from user t1"
+					     		+ "  from User t1"
 					     		+ " where t1.id like 'M%' ) cm";
 	
      /* 시큐리티 코딩의 이름을 e-mail로 쓰기위해서 alias 처리 */
