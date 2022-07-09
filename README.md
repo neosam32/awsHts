@@ -36,3 +36,31 @@ npx create-react-app hts_frontend (리액트 앱 실행)
 - Reacts code nippets
 - vscode-styled-components npm install --save styled-components
 - npm install @reduxjs/toolkit
+
+###
+
+cd hts_frontend
+npx create-react-app hts_ftrontend
+npm i react-router-dom
+
+###
+
+netstat -ano 사용중인 포트 확인
+
+yum remove -y httpd 기존 서버 삭제
+
+yum remove tomcat9* jakarta* ecj eclipse-ecj redhat-lsb xalan-j2
+
+# 설치된 목록 보기
+
+yum list installed
+yum check-update // 설치된 패키를 업데이트
+sudo yum update
+
+파일을 갖고 있는 폴더(디렉토리) 삭제 : rm -r [dir path]
+사용법 : find [찾을위치] -name [파일명]
+
+chmod로 하위폴더까지 권한주기
+[root@~/]# chmod 777 -R tomcat-connectors-1.2.48-src
+
+filezilla로 편하게 삭제함
