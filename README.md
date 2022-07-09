@@ -74,3 +74,17 @@ nvm install node
 node -e "console.log('Running Node.js ' + process.version)"
 
 80번 포트로 구동 : PORT=80 npm run start
+
+# git 명령어
+
+git remote add origin https://github.com/neosam32/awsHts.git 처음에만 해주나???
+
+git add .
+git commit -m " "
+git push -f origin master /_ 강제로 push _/
+
+# linux 명령어
+
+파일을 갖고 있는 폴더(디렉토리) 삭제 : rm -r [dir path] 사용법 : find [찾을위치] -name [파일명]
+
+chmod로 하위폴더까지 권한주기 [root@~/]# chmod 777 -R tomcat-connectors-1.2.48-src
