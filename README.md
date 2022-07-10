@@ -75,13 +75,16 @@ node -e "console.log('Running Node.js ' + process.version)"
 
 80번 포트로 구동 : PORT=80 npm run start
 
-# git 명령어
+### git 명령어
 
 git remote add origin https://github.com/neosam32/awsHts.git 처음에만 해주나???
 
 git add .
 git commit -m " "
 git push -f origin master /_ 강제로 push _/
+
+git config --global user.name 'neosam32' //
+git config --global user.password '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'
 
 # linux 명령어
 
