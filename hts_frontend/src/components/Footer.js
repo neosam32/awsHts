@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 //하나의 컴포넌트를 생성 ( 재사용 )
 // js 파일과 css 파일관리 가능

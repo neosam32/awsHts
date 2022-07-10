@@ -1,18 +1,18 @@
-import React from "react";
-import { useState } from "react";
-import Join from "../components/join/Join";
+import React from 'react';
+import { useState } from 'react';
+import Join from '../components/join/Join';
 
 const JoinPage = () => {
   const [user, setUser] = useState({
-    email: "",
-    username: "",
-    password: "",
-    tlno1: "",
-    tlno2: "",
-    tlno3: "",
+    email: '',
+    username: '',
+    password: '',
+    tlno1: '',
+    tlno2: '',
+    tlno3: '',
   });
 
-  const changeValue = (e) => {
+  const changeValue = e => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
@@ -26,80 +26,84 @@ const JoinPage = () => {
     // console.log(JSON.stringify(user));
     //    alert(JSON.stringify(user));
     //    return;
-    fetch("http://localhost:8000/auth/joinProc", {
-      method: "post",
-      Accept: "application/json",
-      headers: { "Content-Type": "application/json ; charset=utf-8;" },
+    fetch('http://localhost:8000/auth/joinProc', {
+      method: 'post',
+      Accept: 'application/json',
+      headers: { 'Content-Type': 'application/json ; charset=utf-8;' },
       body: JSON.stringify(user),
     })
-      .then((res) => res.json())
-      .then((res) => {
+      .then(res => res.json())
+      .then(res => {
         console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
   return (
     <div>
-      <div class='container'>
+      <div className="container">
         <Join> </Join>
-        <div class='form-group'>
-          <label for='email'>Email:</label>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
           <input
-            type='email'
-            class='form-control'
-            placeholder='email'
-            name='email'
+            type="email"
+            className="form-control"
+            placeholder="email"
+            name="email"
             onChange={changeValue}
           />
         </div>
-        <div class='form-group'>
-          <label for='email'>회원명:</label>
+        <div className="form-group">
+          <label htmlFor="email">회원명:</label>
           <input
-            type='text'
-            class='form-control'
-            placeholder='name'
-            name='username'
+            type="text"
+            className="form-control"
+            placeholder="name"
+            name="username"
             onChange={changeValue}
           />
         </div>
-        <div class='form-group'>
-          <label for='pwd'>비밀번호:</label>
+        <div className="form-group">
+          <label htmlFor="pwd">비밀번호:</label>
           <input
-            type='password'
-            class='form-control'
-            placeholder='password'
-            name='password'
+            type="password"
+            className="form-control"
+            placeholder="password"
+            name="password"
             onChange={changeValue}
           />
         </div>
         <br />
-        <div class='input-group mb-3'>
-          <div class='input-group-prepend'>
-            <span class='input-group-text'>휴대폰번호</span>
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <span className="input-group-text">휴대폰번호</span>
           </div>
 
           <input
-            type='text'
-            class='form-control'
-            name='tlno1'
+            type="text"
+            className="form-control"
+            name="tlno1"
             onChange={changeValue}
           />
           <input
-            type='text'
-            class='form-control'
-            name='tlno2'
+            type="text"
+            className="form-control"
+            name="tlno2"
             onChange={changeValue}
           />
           <input
-            type='text'
-            class='form-control'
-            name='tlno3'
+            type="text"
+            className="form-control"
+            name="tlno3"
             onChange={changeValue}
           />
         </div>
 
-        <button id='btn-join' class='btn btn-primary' onClick={submitJoinUser}>
+        <button
+          id="btn-join"
+          className="btn btn-primary"
+          onClick={submitJoinUser}
+        >
           회원가입
         </button>
       </div>
