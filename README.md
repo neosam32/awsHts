@@ -73,9 +73,32 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 nvm install node
 node -e "console.log('Running Node.js ' + process.version)"
 
-80번 포트로 구동 : PORT=80 npm run start
+####
+
+80번 포트로 구동 :
+PORT=80 npm run start
+
+####
 
 node -v
+
+nvm deactivate
+nvm uninstall <version node>
+
+node -v
+npm cache clean
+sudo npm install -g n lst
+
+// 노드 설치후 추가 설치
+npm install react-router-dom --save
+npm install --save styled-components
+npm install @reduxjs/toolkit
+
+// 프록시 일단 막음
+/home/ubuntu/awsHts/hts_frontend/node_modules/react-scripts/config# vi webpackDevServer.config.js
+
+disableHostCheck:true,
+// !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
 
 ### git 명령어
 
@@ -102,6 +125,28 @@ chmod로 하위폴더까지 권한주기 [root@~/]# chmod 777 -R tomcat-connecto
 문제 : react-scripts: Permission denied
 $ sudo chmod +x node_modules/.bin/react-scripts
 
-node -v
-npm cache clean
-sudo npm install -g n lst
+백그라운드 실행
+nohup PORT=80 npm run start &
+
+자바위치
+which java
+apt-get install openjdk-8-jdk
+vi /etc/profile
+
+export PATH=$PATH:$JAVA_HOME/bin
+source /etc/profile
+
+readlink -f /usr/bin/java
+/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java 에서 bin/java 삭제
+
+profile 수정 /usr/lib/jvm/java-8-openjdk-amd64/jre
+
+# spring
+
+// 최초 build
+./mvnw clean package
+BUILD SUCCESS 와 함께 다시 콘솔창이 뜨면 현재 디렉토리의 파일들 확인 후 target 폴더로 이동
+
+ls -al // target 폴더가 존재할 것임
+cd target
+java - jar [빌드된 jar 파일 이름] &
