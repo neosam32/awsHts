@@ -92,7 +92,7 @@ const HomePage = () => {
           <li>Reacts code nippets</li>
           <li>vscode-styled-components </li>
           <li> @reduxjs/toolkit</li>
-          <li> * AWS EC2 서버 선택시 무저건 Ubuntu 로 설치 아님 고생함. </li>
+          <li> * AWS EC2 서버 선택시 무조건 Ubuntu 로 설치 아님 고생함. </li>
         </ul>
       </article>
     </div>
