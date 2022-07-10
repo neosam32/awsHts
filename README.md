@@ -75,6 +75,8 @@ node -e "console.log('Running Node.js ' + process.version)"
 
 80번 포트로 구동 : PORT=80 npm run start
 
+node -v
+
 ### git 명령어
 
 git remote add origin https://github.com/neosam32/awsHts.git 처음에만 해주나???
@@ -86,8 +88,20 @@ git push -f origin master /_ 강제로 push _/
 git config --global user.name 'neosam32' //
 git config --global user.password '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'
 
+----- 새로만드는 경우
+git init
+git remote -v /_ 현재 깃의 리모트 설정 확인 _/
+git remote add origin https://github.com/neosam32/awsHts.git
+
 # linux 명령어
 
-파일을 갖고 있는 폴더(디렉토리) 삭제 : rm -r [dir path] 사용법 : find [찾을위치] -name [파일명]
+파일을 갖고 있는 폴더(디렉토리) 삭제 : rm -r [dir path] 사용법 : find [찾을위치] -name [파일명]-R
 
 chmod로 하위폴더까지 권한주기 [root@~/]# chmod 777 -R tomcat-connectors-1.2.48-src
+
+문제 : react-scripts: Permission denied
+$ sudo chmod +x node_modules/.bin/react-scripts
+
+node -v
+npm cache clean
+sudo npm install -g n lst
