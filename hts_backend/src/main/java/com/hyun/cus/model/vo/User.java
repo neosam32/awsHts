@@ -29,7 +29,7 @@ public class User {
 	
 	@Builder
     public User(String id,String email, String username, String password, Authority authority, String delyn, String provider,
-			String providerId, Timestamp createDate ,String tlno1 , String tlno2 , String tlno3   ) {
+			String providerId, Timestamp createDate ,String tlno1 , String tlno2 , String tlno3  , String brId ) {
 		this.id   = id;
 		this.email = email;
 		this.username = username;
@@ -42,6 +42,7 @@ public class User {
 		this.tlno1 = tlno1;
 		this.tlno2 = tlno2;
 		this.tlno3 = tlno3;
+		this.brId  = brId;
 	}
 	@Id // primary key
 //    @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -55,7 +56,7 @@ public class User {
     private Authority authority;
 
     private String delyn;
-    
+    private String brId; // 지점Id
     private String provider;    // 
     private String providerId; // 구글 로그인시 
     private String tlno1;
